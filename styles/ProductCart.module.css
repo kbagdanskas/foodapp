@@ -48,4 +48,9 @@
     margin-bottom: 17px;
     padding: 0 5%;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
 }

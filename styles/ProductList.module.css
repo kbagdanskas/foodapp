@@ -5,10 +5,10 @@
     align-items: center;
     margin-right: auto;
     margin-left: auto;
-    height: 120px;
     max-width: 1300px;
     padding: 0 50px;
     cursor: pointer;
+    padding-bottom: 100px;
 }
 
 .desc {
