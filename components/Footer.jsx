@@ -64,6 +64,15 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className={styles.footerBottom}>
+        <div className={styles.copyright}>
+          <Image src="/img/copyright.svg" objectFit="cover" width="30" height="30" alt="copyright"/>
+          <span>2022</span>
+          <p>
+            Visos teisės saugomos
+          </p>
+        </div>
+      </div>
     </div>
     </div>
   )

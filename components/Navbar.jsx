@@ -27,7 +27,9 @@ const Navbar = () => {
         <div className={styles.containerflex}>
         <div className={styles.item}>
           <div className={styles.logo}>
-            <Image src="/img/logo.png" alt="logo" width="200" height="40"/>
+            <a href="#">
+              <Image src="/img/logo.png" alt="logo" width="200" height="40"/>
+            </a>
           </div>
         </div>
         <div className={styles.item}>
