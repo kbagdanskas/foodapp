@@ -81,14 +81,15 @@
 .callButton {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     color: #fff;
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 600;
     transition: 0.2s;
-    border-radius: 25px;
-    padding: 15px 15px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     background-color: #000;
     border: 2px solid #fff;
     margin-right: 20px;
@@ -96,14 +97,15 @@
 .cart {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     color: crimson;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
     transition: 0.2s;
-    border-radius: 25px;
-    padding: 15px 15px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     background-color: #000;
     border: 2px solid #fff;
     margin-right: 50px;
@@ -122,4 +124,29 @@
     border-radius: 50%;
     top: 0;
     right: -5px;
+}
+
+@media screen and (max-width: 480px) {
+    .listtext {
+        display: none;
+    }
+    .logo {
+        margin-right: 20px;
+        height: 50px;
+    }
+    .logo a span img {
+        height: 50px !important;
+        object-fit: contain !important;
+    }
+    .container {
+        height: 100px;
+        padding: 0 30px;
+    }
+    .cart {
+        margin-right: 0;
+    }
+    /* .callButton span img {
+        height: 12px !important;
+        width: 12px !important;
+    } */
 }

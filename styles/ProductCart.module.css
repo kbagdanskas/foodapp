@@ -54,3 +54,30 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
 }
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 20px 20px;
+    }
+    .title {
+        font-size: 30px;
+    }
+    .price {
+        font-size: 24px;
+    }
+    .desc {
+        font-size: 18px;
+        padding: 0;
+    }
+    .container:nth-child(4n) {
+        border-right: 1px solid #dadada;
+    }
+    .container {
+        border: 1px solid #dadada;
+        margin-bottom: 20px;
+    }
+    .container:last-of-type {
+        margin-bottom: 0px;
+    }
+}

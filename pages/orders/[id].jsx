@@ -24,7 +24,7 @@ const Order = () => {
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr className={styles.tbodyTr}>
                     <td>
                         <span className={styles.id}>11313\311\1\</span>
                     </td>

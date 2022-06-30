@@ -22,7 +22,8 @@ const Product = () => {
             <h1 className={styles.title}>{pizza.name}</h1>
             <span className={styles.price}>${pizza.price[size]}</span>
             <p className={styles.desc}>{pizza.desc}</p>
-            <div className={styles.sizes}>Choose the size
+            <div className={styles.choose}>Choose the size</div>
+            <div className={styles.sizes}>
                 <div className={styles.size} onClick={()=>setSize(0)}>
                     <Image src="/img/pizzasize.svg" layout='fill' alt="size"/>
                     <span className={styles.number}>Small</span>

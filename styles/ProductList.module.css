@@ -12,9 +12,18 @@
 }
 
 .desc {
+    font-size: 36px;
+    line-height: 1.5;
+}
+
+.title {
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+.desc {
     font-size: 24px;
     color: #444;
-    width: 70%;
 }
 
 .wrapper {
@@ -23,5 +32,21 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .desc {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 0;
+    }
+    .container {
+        padding-bottom: 50px;
+    }
 }
 

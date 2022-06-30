@@ -18,29 +18,7 @@ const Cart = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <div className={styles.imgContainer}>
-                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='cover'/>
-                        </div>
-                    </td>
-                    <td>
-                        <span className={styles.name}>Coralzo</span>
-                    </td>
-                    <td>
-                        <span className={styles.extras}>Spicy sauce</span>
-                    </td>
-                    <td>
-                        <span className={styles.price}>20$</span>
-                    </td>
-                    <td>
-                        <span className={styles.quantity}>2</span>
-                    </td>
-                    <td>
-                        <span className={styles.total}>40$</span>
-                    </td>
-                </tr>
-                <tr>
+                <tr className={styles.tbodyTr}>
                     <td>
                         <div className={styles.imgContainer}>
                             <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='fill'/>
@@ -62,10 +40,32 @@ const Cart = () => {
                         <span className={styles.total}>40$</span>
                     </td>
                 </tr>
-                <tr>
+                <tr className={styles.tbodyTr}>
                     <td>
                         <div className={styles.imgContainer}>
-                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='cover'/>
+                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='fill'/>
+                        </div>
+                    </td>
+                    <td>
+                        <span className={styles.name}>Coralzo</span>
+                    </td>
+                    <td>
+                        <span className={styles.extras}>Spicy sauce</span>
+                    </td>
+                    <td>
+                        <span className={styles.price}>20$</span>
+                    </td>
+                    <td>
+                        <span className={styles.quantity}>2</span>
+                    </td>
+                    <td>
+                        <span className={styles.total}>40$</span>
+                    </td>
+                </tr>
+                <tr className={styles.tbodyTr}>
+                    <td>
+                        <div className={styles.imgContainer}>
+                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='fill'/>
                         </div>
                     </td>
                     <td>
