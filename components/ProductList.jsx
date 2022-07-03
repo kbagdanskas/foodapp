@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/ProductList.module.css";
 import ProductCart from "./ProductCart";
 
@@ -5,10 +6,10 @@ const ProductList = () => {
   return (
     <div className={styles.container}>
         <h1 className={styles.title}>
-            Karsciausios picos siuo metu!
+            Picos katalogas
         </h1>
         <p className={styles.desc}>
-            Geriausia pica mieste
+            Šiuo metu populiaru:
         </p>
         <div className={styles.wrapper}>
             <ProductCart/>
@@ -19,6 +20,11 @@ const ProductList = () => {
             <ProductCart/>
             <ProductCart/>
             <ProductCart/>
+            <Link href="/pizzas">
+            <a className={styles.loadMore} href="#">
+              Rodyti daugiau
+            </a>
+            </Link>
         </div>
     </div>
   )

@@ -10,7 +10,6 @@
     transition: 0.2s;
 }
 
-
 .container:hover {
     box-shadow: 0 0 5px black;
     transition: 0.2s;
@@ -55,7 +54,20 @@
     -webkit-line-clamp: 6;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1023px) {
+    .container {
+        width: 50%;
+    }
+    .container:nth-child(4n) {
+        border-right: 1px solid #dadada;
+    }
+    .container {
+        border: 1px solid #dadada;
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 639px) {
     .container {
         width: 100%;
         padding: 20px 20px;
@@ -70,11 +82,7 @@
         font-size: 18px;
         padding: 0;
     }
-    .container:nth-child(4n) {
-        border-right: 1px solid #dadada;
-    }
     .container {
-        border: 1px solid #dadada;
         margin-bottom: 20px;
     }
     .container:last-of-type {

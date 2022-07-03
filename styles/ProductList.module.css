@@ -1,14 +1,13 @@
 .container {
-    padding: 20px 10px;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-right: auto;
     margin-left: auto;
     max-width: 1300px;
-    padding: 0 50px;
+    padding: 50px 50px 50px 50px;
     cursor: pointer;
-    padding-bottom: 100px;
 }
 
 .desc {
@@ -19,11 +18,14 @@
 .title {
     font-size: 48px;
     line-height: 1.5;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .desc {
     font-size: 24px;
     color: #444;
+    margin-bottom: 20px;
 }
 
 .wrapper {
@@ -34,9 +36,34 @@
     flex-wrap: wrap;
 }
 
-@media screen and (max-width: 480px) {
+.loadMore,
+.loadMore:active,
+.loadMore:focus {
+    display: inline-block;
+    outline: none;
+    border: none;
+    line-height: 1.5;
+    background: #df4143;
+    border-radius: 30px;
+    color: rgb(241, 241, 241);
+    font-size: 15px;
+    min-width: 115px;
+    padding: 18px 32px;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: 0.3s;
+    margin-top: 50px;
+}
+
+.loadMore:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 639px) {
     .title {
-        text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
     }
@@ -50,3 +77,8 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 50px 20px;
+    }
+}

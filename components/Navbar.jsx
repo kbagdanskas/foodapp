@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Navbar.module.css";
 import HamburgerMenu, { Links } from '../components/Hamburger.jsx'
+import Link from "next/link";
 
 const Navbar = () => {
 
@@ -17,18 +18,27 @@ const Navbar = () => {
         <div className={styles.containerflex}>
           <div className={styles.item}>
             <div className={styles.logo}>
-              <a href="#">
+              <Link href="/">
+                <a>
                 <Image src="/img/logo.png" alt="logo" width="200" height="40"/>
-              </a>
+                </a>
+              </Link>
             </div>
           </div>
           <div className={styles.flx}>
             <div className={styles.item}>
             <div className={styles.callButton}>
               <Image src="/img/icon-phone.svg" alt="phone-logo" width="18" height="18"/>
+              <ul>
+                <li><a href="tel:846444333">846444333</a></li>
+              </ul>
             </div>
             <div className={styles.cart}>
-              <Image src="/img/cart.png" alt="cart" width="18" height="18"/>
+            <Link href="/cart">
+                <a>
+                <Image src="/img/cart.png" alt="cart" width="18" height="18"/>
+                </a>
+              </Link>
               <div className={styles.cartnumber}>2</div>
             </div>
             </div>
