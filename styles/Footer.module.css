@@ -1,8 +1,7 @@
-.container{
+.container {
     margin-right: auto;
     margin-left: auto;
     max-width: 1300px;
-    height: 450px;
     padding-top: 50px;
 }
 
@@ -85,8 +84,9 @@
 .copyright {
     display: flex;
     flex-direction: row;
-    align-items: center;    
+    align-items: center;
     color: #fff;
+    padding: 1rem;
 }
 
 .copyright span {
@@ -94,14 +94,10 @@
     margin-left: 20px;
 }
 
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 639px) {
     .cartWrap {
         width: 100%;
         margin-bottom: 20px;
-    }
-    .container {
-        height: unset;
     }
     .items {
         flex-direction: column;

@@ -1,6 +1,12 @@
 .container {
-    height: calc(100vh - 100px);
+    height: calc(80vh - 120px);
     display: flex;
+}
+
+.title {
+    font-size: 48px;
+    line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 .left {
@@ -18,8 +24,17 @@
 
 .imgContainer {
     position: relative;
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
+}
+
+.imgContainer span img {
+    object-fit: contain !important;
+}
+
+.right p {
+    margin: 20px 0;
+    text-align: left;
 }
 
 .price {
@@ -36,12 +51,12 @@
     cursor: pointer;
 }
 
-.size:nth-child(2){
+.size:nth-child(2) {
     width: 40px;
     height: 40px;
 }
 
-.size:last-child{
+.size:last-child {
     width: 50px;
     height: 50px;
 }
@@ -50,6 +65,7 @@
     width: 40%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .number {
@@ -66,12 +82,14 @@
 .ingredients {
     display: flex;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .option {
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     font-size: 14px;
     font-weight: 500;
 }
@@ -83,33 +101,69 @@
 
 .quantity {
     width: 50px;
-    height: 30px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid grey;
+    margin-right: 10px;
 }
 
 .button {
-    height: 30px;
-    margin-left: 10px;
-    background-color: crimson;
-    color: #fff;
+    display: inline-block;
+    outline: none;
     border: none;
+    line-height: 1.5;
+    background: #df4143;
+    border-radius: 30px;
+    color: rgb(241, 241, 241);
+    font-size: 15px;
+    min-width: 115px;
+    padding: 10px 20px;
+    text-align: center;
     font-weight: 500;
-    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: 0.3s;
+    margin-top: 0px;
+    height: 40px;
 }
 
 .choose {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-weight: 500;
+    text-align: left;
 }
 
-@media screen and (max-width: 480px) {
+.option input {
+    margin-right: 10px;
+}
+
+.right input {
+    padding: 10px;
+}
+
+@media screen and (max-width: 1023px) {
     .container {
         height: auto;
         text-align: center;
         flex-direction: column;
     }
     .imgContainer {
+        width: 40vw;
+        height: 30vw;
+        margin-top: 20px;
+    }
+    .quantity {
+        text-align: center;
+        border: 1px solid grey;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .imgContainer {
         width: 70vw;
-        height: 70vw;
+        height: 30vw;
         margin-top: 20px;
     }
     .title {
@@ -131,12 +185,49 @@
         height: 25px;
         margin-right: 5px;
     }
-    .quantity {
-        height: 40px;
-        padding: 10px 20px;
+    .choose {
+        text-align: left;
     }
-    .button {
-        padding: 10px 20px;
-        height: 40px;
+    .right p {
+        text-align: left;
+    }
+    .price {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .imgContainer {
+        width: 80vw;
+        height: 50vw;
+        margin-top: 20px;
+    }
+    .title {
+        margin: 5px;
+    }
+    .sizes {
+        width: 100%;
+        padding: 0 20px;
+    }
+    .ingredients {
+        flex-direction: column;
+    }
+    .option {
+        margin: 10px;
+        font-size: 16px;
+    }
+    .checkbox {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+    .choose {
+        text-align: left;
+    }
+    .right p {
+        text-align: left;
+    }
+    .price {
+        text-align: left;
     }
 }
