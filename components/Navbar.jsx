@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.item}>
-        <div className='max-w-full h-12 flex justify-start items-center bg-black text-white rounded-md '>
+        <div className='max-w-full h-12 flex justify-start items-center text-white rounded-md '>
             <div className='hidden lg:flex'>
                 <Links />
             </div>
