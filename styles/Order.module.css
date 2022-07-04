@@ -1,5 +1,5 @@
 .container {
-    padding: 50px;
+    padding: 100px 50px;
     display: flex;
 }
 
@@ -113,6 +113,9 @@
         text-align: center;
     }
     .table {
+        margin-bottom: 40px;
+    }
+    .row {
         margin-bottom: 20px;
     }
 }

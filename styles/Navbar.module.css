@@ -40,22 +40,12 @@
     box-shadow: inset 0 -1px 0 0 rgb(54 54 54);
 }
 
-.listtext {
-    display: flex;
-    flex-direction: row;
-    margin-right: 50px;
-}
-
-.listtext li {
-    margin-right: 20px;
-}
-
 .logo {
     flex: 3;
     height: 40px;
 }
 
-.listtext li a {
+.listtext {
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
@@ -63,7 +53,7 @@
     opacity: 0.8;
 }
 
-.listtext li a:after {
+.listtext:after {
     position: absolute;
     content: '';
     width: 100%;
@@ -76,11 +66,11 @@
     transition: 0.2s;
 }
 
-.listtext li a:hover:after {
+.listtext:hover:after {
     opacity: 1;
 }
 
-.listtext li a:hover {
+.listtext:hover {
     opacity: 1;
     transition: 0.2s;
 }

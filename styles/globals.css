@@ -10,6 +10,41 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.listtext {
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.8;
+    margin-right: 25px;
+}
+
+.listtext:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: crimson;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.listtext:last-of-type {
+    margin-right: 50px;
+}
+
+.listtext:hover:after {
+    opacity: 1;
+}
+
+.listtext:hover {
+    opacity: 1;
+    transition: 0.2s;
+}
+
 li {
     list-style: none;
 }
@@ -22,4 +57,17 @@ ul {
 
 * {
     box-sizing: border-box;
+}
+
+.p-4 {
+    padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+    .p-4 {
+        padding: 1rem;
+    }
+    .listtext:after {
+        display: none;
+    }
 }
