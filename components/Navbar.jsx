@@ -2,8 +2,11 @@ import Image from "next/image";
 import styles from "../styles/Navbar.module.css";
 import HamburgerMenu, { Links } from '../components/Hamburger.jsx'
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+
+  const quantity = useSelector(state=>state.cart.quantity);
 
   return (
     <div className={styles.header}>
@@ -33,14 +36,14 @@ const Navbar = () => {
                 <li><a href="tel:846444333">846444333</a></li>
               </ul>
             </div>
+            <Link href="/cart" passHref>
             <div className={styles.cart}>
-            <Link href="/cart">
                 <a>
                 <Image src="/img/cart.png" alt="cart" width="18" height="18"/>
                 </a>
-              </Link>
-              <div className={styles.cartnumber}>2</div>
+              <div className={styles.cartnumber}>{quantity}</div>
             </div>
+            </Link>
             </div>
             <div className='flex flex-hmbgr lg:hidden'><HamburgerMenu /></div>
           </div>

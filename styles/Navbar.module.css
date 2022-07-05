@@ -90,6 +90,7 @@
     background-color: #000;
     border: 2px solid #fff;
     margin-right: 20px;
+    cursor: pointer;
 }
 .cart {
     display: flex;
@@ -106,6 +107,7 @@
     background-color: #000;
     border: 2px solid #fff;
     position: relative;
+    cursor: pointer;
 }
 
 .cartnumber {

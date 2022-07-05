@@ -76,6 +76,39 @@
     opacity: 0.8;
 }
 
+.payButton,
+.payButton:active,
+.payButton:focus {
+    display: inline-block;
+    outline: none;
+    border: none;
+    line-height: 1.5;
+    background: #df4143;
+    border-radius: 30px;
+    color: rgb(241, 241, 241);
+    font-size: 15px;
+    min-width: 115px;
+    padding: 18px 32px;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: 0.3s;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.payButton:hover {
+    opacity: 0.8;
+}
+
+.paymentMethods {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 1023px) {
     .left {
         flex: 3;

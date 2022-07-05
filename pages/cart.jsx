@@ -1,8 +1,72 @@
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState } from 'react'
 import styles from "../styles/Cart.module.css";
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    PayPalScriptProvider,
+    PayPalButtons,
+    usePayPalScriptReducer,
+  } from "@paypal/react-paypal-js";
+import axios from "axios";
 
 const Cart = () => {
+    const [open, setOpen] = useState(false)
+    const amount = "2";
+    const currency = "USD";
+    const style = {"layout":"vertical"};
+    const dispatch = useDispatch()
+    const cart = useSelector(state=>state.cart)
+
+    // Custom component to wrap the PayPalButtons and handle currency changes
+const ButtonWrapper = ({ currency, showSpinner }) => {
+    // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+    // This is the main reason to wrap the PayPalButtons in a new component
+    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+
+    useEffect(() => {
+        dispatch({
+            type: "resetOptions",
+            value: {
+                ...options,
+                currency: currency,
+            },
+        });
+    }, [currency, showSpinner]);
+
+
+    return (<>
+            { (showSpinner && isPending) && <div className="spinner" /> }
+            <PayPalButtons
+                style={style}
+                disabled={false}
+                forceReRender={[amount, currency, style]}
+                fundingSource={undefined}
+                createOrder={(data, actions) => {
+                    return actions.order
+                        .create({
+                            purchase_units: [
+                                {
+                                    amount: {
+                                        currency_code: currency,
+                                        value: amount,
+                                    },
+                                },
+                            ],
+                        })
+                        .then((orderId) => {
+                            // Your code here after create the order
+                            return orderId;
+                        });
+                }}
+                onApprove={function (data, actions) {
+                    return actions.order.capture().then(function () {
+                        // Your code here after capture the order
+                    });
+                }}
+            />
+        </>
+    );
+}
   return (
     <div className={styles.container}>
         <div className={styles.left}>
@@ -18,72 +82,34 @@ const Cart = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr className={styles.tbodyTr}>
+                {cart.products.map((product) => (
+                <tr className={styles.tbodyTr} key={product._id}>
                     <td>
                         <div className={styles.imgContainer}>
-                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='fill'/>
+                            <Image src={product.img} alt="pizza" layout='fill' objectFit='fill'/>
                         </div>
                     </td>
                     <td>
-                        <span className={styles.name}>Coralzo</span>
+                        <span className={styles.name}>{product.title}</span>
                     </td>
                     <td>
-                        <span className={styles.extras}>Spicy sauce</span>
+                        <span className={styles.extras}>
+                            {product.extras.map((extra) => (
+                            <span key={extra._id}>{extra.text}, </span>
+                        ))}
+                        </span>
                     </td>
                     <td>
-                        <span className={styles.price}>20$</span>
+                        <span className={styles.price}>{product.price}</span>
                     </td>
                     <td>
-                        <span className={styles.quantity}>2</span>
+                        <span className={styles.quantity}>{product.quantity}</span>
                     </td>
                     <td>
-                        <span className={styles.total}>40$</span>
+                        <span className={styles.total}>${product.price * product.quantity}</span>
                     </td>
                 </tr>
-                <tr className={styles.tbodyTr}>
-                    <td>
-                        <div className={styles.imgContainer}>
-                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='fill'/>
-                        </div>
-                    </td>
-                    <td>
-                        <span className={styles.name}>Coralzo</span>
-                    </td>
-                    <td>
-                        <span className={styles.extras}>Spicy sauce</span>
-                    </td>
-                    <td>
-                        <span className={styles.price}>20$</span>
-                    </td>
-                    <td>
-                        <span className={styles.quantity}>2</span>
-                    </td>
-                    <td>
-                        <span className={styles.total}>40$</span>
-                    </td>
-                </tr>
-                <tr className={styles.tbodyTr}>
-                    <td>
-                        <div className={styles.imgContainer}>
-                            <Image src="/img/hawaii.png" alt="pizza" layout='fill' objectFit='fill'/>
-                        </div>
-                    </td>
-                    <td>
-                        <span className={styles.name}>Coralzo</span>
-                    </td>
-                    <td>
-                        <span className={styles.extras}>Spicy sauce</span>
-                    </td>
-                    <td>
-                        <span className={styles.price}>20$</span>
-                    </td>
-                    <td>
-                        <span className={styles.quantity}>2</span>
-                    </td>
-                    <td>
-                        <span className={styles.total}>40$</span>
-                    </td>
-                </tr>
+                ))}
                 </tbody>
             </table>
         </div>
@@ -91,15 +117,37 @@ const Cart = () => {
             <div className={styles.wrapper}>
                 <h2 className={styles.title}>CART TOTAL</h2>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Subtotal</b>$80
+                    <b className={styles.totalTextTitle}>Subtotal</b>${cart.total}
                 </div>
                 <div className={styles.totalText}>
                     <b className={styles.totalTextTitle}>Discount</b>$0
                 </div>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Total</b>$80
+                    <b className={styles.totalTextTitle}>Total</b>${cart.total}
                 </div>
-                <button className={styles.button}>Pateikti</button>
+                {open ? (
+                    <div className={styles.paymentMethods}>
+                    <button className={styles.payButton}>Cash on delivery</button>
+                    <PayPalScriptProvider
+                        options={{
+                            "client-id": "AdM1j6SGHadq8vgwV0tMlJVGCj_vY7NaJA6uFXVSQYeWpxwMAFUiFEabKRxUtRRwymUxKkKKpvrAY5hx",
+                            components: "buttons",
+                            currency: "USD",
+                            "disable-funding": "credit,card,p24",
+                        }}
+                    >
+                        <ButtonWrapper
+                            currency={currency}
+                            showSpinner={false}
+                        />
+                    </PayPalScriptProvider>
+                    </div>
+                ) : (
+                    <button onClick={()=> setOpen(true)} className={styles.button}>
+                        Pateikti
+                    </button>
+                )}
+                
             </div>
         </div>
     </div>
