@@ -1,14 +1,17 @@
 import Image from 'next/image';
 import styles from "../styles/ProductCart.module.css";
+import Link from 'next/link';
 
-const ProductCart = () => {
+const ProductCart = ({ product }) => {
   return (
     <div className={styles.container}>
-        <Image src="/img/hawaii.png" alt="" width="200" height="200" />
-        <h1 className={styles.title}>Firoi</h1>
-        <span className={styles.price}>20$</span>
+      <Link href={`/product/${product._id}`} passHref>
+        <Image src={product.img} alt="" width="200" height="200" />
+        </Link>
+        <h1 className={styles.title}>{product.title}</h1>
+        <span className={styles.price}>${product.prices[0]}</span>
         <p className={styles.desc}>
-            Kvietinių miltų pagrindas, pomidorų padažas, „Mozzarella“, konservuoti ananasai, vištiena, švelnus saldžiarūgštis padažas, augalinis aliejus su česnaku
+            {product.desc}
         </p>
     </div>
   )

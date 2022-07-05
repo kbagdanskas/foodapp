@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "../styles/ProductList.module.css";
 import ProductCart from "./ProductCart";
 
-const ProductList = () => {
+const ProductList = ({productList}) => {
   return (
     <div className={styles.container}>
         <h1 className={styles.title}>
@@ -12,20 +12,15 @@ const ProductList = () => {
             Šiuo metu populiaru:
         </p>
         <div className={styles.wrapper}>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <Link href="/pizzas">
+        {productList.map((product) => (
+            <ProductCart key ={product._id} product={product} />
+          ))}
+        </div>
+        <Link href="/pizzas">
             <a className={styles.loadMore} href="#">
               Rodyti daugiau
             </a>
             </Link>
-        </div>
     </div>
   )
 }
