@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
     if (method === 'PUT') {
         try {
-            const product = await Product.create(req.body);
+            const product = await Product.find(req.body);
             res.status(201).json(product);
         } catch (err) {
             res.status(500).json(err);
@@ -29,8 +29,10 @@ export default async function handler(req, res) {
 
     if (method === 'DELETE') {
         try {
-            const product = await Product.create(req.body);
-            res.status(201).json(product);
+            await Product.findByIdAndDelete(id);
+            res.status(201).json(
+                'The product was deleted successfully'
+            );
         } catch (err) {
             res.status(500).json(err);
         }
