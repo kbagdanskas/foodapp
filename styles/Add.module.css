@@ -1,4 +1,44 @@
 .container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(245, 240, 240, 0.52);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    width: 500px;
+    background-color: #fff;
+    padding: 10px 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    top: -10px;
+    right: -10px;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
 .mainAddButton,
@@ -22,8 +62,90 @@
     transition: 0.3s;
     margin-top: 50px;
     cursor: pointer;
+    margin-left: 50px;
 }
 
 .mainAddButton:hover {
+    opacity: 0.8;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input {
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+
+.priceContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.textarea {
+    border: 1px solid #000;
+    resize: none;
+}
+
+.inputSm {
+    width: 25%;
+}
+
+.extra {
+    display: flex;
+    justify-content: space-between;
+}
+
+.extraItems {
+    margin: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.extraItem {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid crimson;
+    background-color: #fff;
+    color: crimson;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addButton,
+.addButton:active,
+.addButton:focus {
+    display: inline-block;
+    outline: none;
+    border: none;
+    line-height: 1.5;
+    background: #df4143;
+    border-radius: 8px;
+    color: rgb(241, 241, 241);
+    font-size: 15px;
+    min-width: 115px;
+    padding: 18px 32px;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.addButton:hover {
     opacity: 0.8;
 }
