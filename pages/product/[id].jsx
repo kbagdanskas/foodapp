@@ -49,19 +49,19 @@ const Product = ({product}) => {
             <h1 className={styles.title}>{product.title}</h1>
             <span className={styles.price}>${price}</span>
             <p className={styles.desc}>{product.desc}</p>
-            <div className={styles.choose}>Choose the size</div>
+            <div className={styles.choose}>Pasirinkite dydį</div>
             <div className={styles.sizes}>
                 <div className={styles.size} onClick={()=>handleSize(0)}>
                     <Image src="/img/pizzasize.svg" layout='fill' alt="size"/>
-                    <span className={styles.number}>Small</span>
+                    <span className={styles.number}>Maža</span>
                 </div>
                 <div className={styles.size} onClick={()=>handleSize(1)}>
                     <Image src="/img/pizzasize.svg" layout='fill' alt="size"/>
-                    <span className={styles.number}>Medium</span>
+                    <span className={styles.number}>Vidutinė</span>
                 </div>
                 <div className={styles.size} onClick={()=>handleSize(2)}>
                     <Image src="/img/pizzasize.svg" layout='fill' alt="size"/>
-                    <span className={styles.number}>Large</span>
+                    <span className={styles.number}>Didelė</span>
                 </div>
             </div>
             <h3 className={styles.choose}>Pasirinkite papildomų ingridientų</h3>
@@ -82,12 +82,30 @@ const Product = ({product}) => {
                 <input onChange={(e) => setQuantity(e.target.value)}
                 type="number"
                 defaultValue={1}
+                min="0"
+                onPaste={preventPasteNegative}
+                onKeyPress={preventMinus}
                 className={styles.quantity}/>
                 <button className={styles.button} onClick={handleClick}>Add to Cart</button>
             </div>
         </div>
     </div>
   );
+};
+
+const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData('text'));
+
+    if (pastedData < 0) {
+        e.preventDefault();
+    }
+};
+
+const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+        e.preventDefault();
+    }
 };
 
 
