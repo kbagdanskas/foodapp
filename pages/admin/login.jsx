@@ -24,22 +24,22 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1>Admin Dashboard</h1>
+        <h1>Admin Prisijungimas</h1>
         <input
-          placeholder="username"
+          placeholder="Vartotojas"
           className={styles.input}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          placeholder="password"
+          placeholder="Slaptažodis"
           type="password"
           className={styles.input}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleClick} className={styles.button}>
-          Sign In
+          Prisijungti
         </button>
-        {error && <span className={styles.error}>Wrong Credentials!</span>}
+        {error && <span className={styles.error}>Blogai įvesta informacija!</span>}
       </div>
     </div>
   );

@@ -9,39 +9,50 @@ const handleClick = () => {
     createOrder({ customer, address, total, method: 0 });
   };
 
+const handleCancel = (event) => {
+  event.currentTarget.classList.remove(
+    'container',
+    'wrapper',
+    'my-class-3',
+  );
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>You will pay $12 after delivery.</h1>
+      <span onClick={handleCancel} className={styles.close}>
+          X
+        </span>
+        <h1 className={styles.title}>Turėsite sumokėti kurjeriui</h1>
         <div className={styles.item}>
-          <label className={styles.label}>Name Surname</label>
+          <label className={styles.label}>Vardas</label>
           <input
-            placeholder="John Doe"
+            placeholder="Vardenis"
             type="text"
             className={styles.input}
             onChange={(e) => setCustomer(e.target.value)}
           />
         </div>
         <div className={styles.item}>
-          <label className={styles.label}>Phone Number</label>
+          <label className={styles.label}>Tel. numeris</label>
           <input
             type="text"
-            placeholder="+1 234 567 89"
+            placeholder="+370 60 000000"
             className={styles.input}
           />
         </div>
         <div className={styles.item}>
-          <label className={styles.label}>Address</label>
+          <label className={styles.label}>Adresas</label>
           <textarea
             rows={5}
-            placeholder="Elton St. 505 NY"
+            placeholder="Vėjo g. 14-6"
             type="text"
             className={styles.textarea}
             onChange={(e) => setAddress(e.target.value)}
           />
         </div>
         <button className={styles.button} onClick={handleClick}>
-          Order
+          Pateikti
         </button>
       </div>
     </div>

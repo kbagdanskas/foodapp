@@ -4,7 +4,7 @@ import ProductCart from "./ProductCart";
 
 const ProductList = ({productList}) => {
   return (
-    <div className={styles.container}>
+    <div id="productList" className={styles.container}>
         <h1 className={styles.title}>
             Picos katalogas
         </h1>

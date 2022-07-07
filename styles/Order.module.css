@@ -79,6 +79,13 @@
     margin-right: 10px;
 }
 
+.title {
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
 .button {
     display: inline-block;
     outline: none;

@@ -6,7 +6,20 @@ import styles from "../../styles/Admin.module.css"
 const Index = ({ orders, products }) => {
     const [pizzaList, setPizzaList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
-    const status = ["preparing", "on the way", "delivered"];
+    const status = ["Sumoketa", "Ruošiama", "Pakeliui", "Pristatyta"];
+
+    
+    const handleDeleteUser = async (id) => {
+        console.log(id);
+        try {
+        const res = await axios.delete(
+            "http://localhost:3000/api/orders/" + id
+        );
+        setOrderList(orderList.filter((order) => order._id !== id));
+        } catch (err) {
+        console.log(err);
+        }
+    };
 
     const handleDelete = async (id) => {
         console.log(id);
@@ -23,7 +36,6 @@ const Index = ({ orders, products }) => {
     const handleStatus = async (id) => {
         const item = orderList.filter((order) => order._id === id)[0];
         const currentStatus = item.status;
-
         try {
             const res = await axios.put("http://localhost:3000/api/orders/" + id, {
                 status: currentStatus + 1,
@@ -59,15 +71,14 @@ const Index = ({ orders, products }) => {
                                         src={product.img}
                                         width={50}
                                         height={50}
-                                        objectFit="cover"
+                                        objectFit="fill"
                                         alt=""
                                     />
                                 </td>
-                                <td>{product._id.slice(0,5)}...</td>
+                                <td>{product._id.slice(0,8)}...</td>
                                 <td>{product.title}</td>
                                 <td>${product.prices[0]}</td>
                                 <td>
-                                    <button className={styles.button}>Edit</button>
                                     <button className={styles.button}
                                     onClick={() => handleDelete(product._id)}>Delete</button>
                                 </td>
@@ -92,17 +103,21 @@ const Index = ({ orders, products }) => {
                     {orderList.map((order) => (
                         <tbody key={order._id}>
                             <tr className={styles.trTitle}>
-                                <td>{order._id.slice(0, 5)}...</td>
+                                <td>{order._id.slice(0, 8)}...</td>
                                 <td>{order.customer}</td>
                                 <td>${order.total}</td>
                                 <td>
-                                    {order.method === 0 ? <span>cash</span> : <span>paid</span>}
+                                    {order.method === 0 ? <span>Grynaisiais</span> : <span>Kortele</span>}
                                 </td>
                                 <td>{status[order.status]}</td>
                                 <td>
-                                    <button onClick={() => handleStatus(order._id)}>
+                                    <button className={styles.nextStage} onClick={() => handleStatus(order._id)}>
                                         Next Stage
                                     </button>
+                                </td>
+                                <td>
+                                    <button className={styles.button}
+                                    onClick={() => handleDeleteUser(order._id)}>Delete</button>
                                 </td>
                             </tr>
                         </tbody>

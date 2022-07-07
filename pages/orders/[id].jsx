@@ -45,28 +45,28 @@ const Order = ({order}) => {
             <div className={styles.row}>
                 <div className={statusClass(0)}>
                     <Image src="/img/paid.png" width={30} height={30} alt=""/>
-                    <span>Payment</span>
+                    <span>Apmokėjimas</span>
                     <div className={styles.checkedIcon}>
                     <Image className={styles.checkedIcon} src="/img/checkmark.svg" width={20} height={20} alt=""/>
                     </div>
                 </div>
                 <div className={statusClass(1)}>
                     <Image src="/img/paid.png" width={30} height={30} alt=""/>
-                    <span>Preparing</span>
+                    <span>Ruošiama</span>
                     <div className={styles.checkedIcon}>
                     <Image className={styles.checkedIcon} src="/img/checkmark.svg" width={20} height={20} alt=""/>
                     </div>
                 </div>
                 <div className={statusClass(2)}>
                     <Image src="/img/delivery.png" width={30} height={30} alt=""/>
-                    <span>On the way</span>
+                    <span>Pakeliui</span>
                     <div className={styles.checkedIcon}>
                     <Image className={styles.checkedIcon} src="/img/checkmark.svg" width={20} height={20} alt=""/>
                     </div>
                 </div>
                 <div className={statusClass(3)}>
                     <Image src="/img/delivered.png" width={30} height={30} alt=""/>
-                    <span>Delivered</span>
+                    <span>Pristatyta</span>
                     <div className={styles.checkedIcon}>
                     <Image className={styles.checkedIcon} src="/img/checkmark.svg" width={20} height={20} alt=""/>
                     </div>
@@ -75,15 +75,15 @@ const Order = ({order}) => {
         </div>
         <div className={styles.right}>
             <div className={styles.wrapper}>
-                <h2 className={styles.title}>CART TOTAL</h2>
+                <h2 className={styles.title}>Krepšelio suma</h2>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Subtotal</b>${order.total}
+                    <b className={styles.totalTextTitle}>Kaina:</b>${order.total}
                 </div>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Discount</b>$0
+                    <b className={styles.totalTextTitle}>Nuolaida</b>$0
                 </div>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Total</b>${order.total}
+                    <b className={styles.totalTextTitle}>Iš viso:</b>${order.total}
                 </div>
                 <button disabled className={styles.button}>Sumoketa</button>
             </div>

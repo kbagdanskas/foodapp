@@ -5,7 +5,9 @@ const handler = async (req, res) => {
     const {
         method,
         query: { id },
+        cookies,
     } = req;
+    const token = cookies.token;
 
     await dbConnect();
 
@@ -32,6 +34,15 @@ const handler = async (req, res) => {
         }
     }
     if (method === 'DELETE') {
+        if (!token || token !== process.env.token) {
+            return res.status(401).json('You are not authenticated!');
+        }
+        try {
+            await Order.findByIdAndDelete(id);
+            res.status(201).json('The user was deleted successfully');
+        } catch (err) {
+            res.status(500).json(err);
+        }
     }
 };
 
